@@ -1,0 +1,142 @@
+[
+ {
+  "chuck_id": 2000,
+  "fault": "residual_charge",
+  "onset_wafer": 334,
+  "n_wafers": 868,
+  "run_to_failure": false,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 0.7756072426123277
+ },
+ {
+  "chuck_id": 2001,
+  "fault": "healthy",
+  "onset_wafer": -1,
+  "n_wafers": 769,
+  "run_to_failure": false,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 0.29737025877893475
+ },
+ {
+  "chuck_id": 2002,
+  "fault": "heater_zone",
+  "onset_wafer": 159,
+  "n_wafers": 848,
+  "run_to_failure": false,
+  "drift_sensor": "",
+  "bad_zone": 2,
+  "magnitude": 0.37386617176359743
+ },
+ {
+  "chuck_id": 2003,
+  "fault": "sensor_drift",
+  "onset_wafer": 213,
+  "n_wafers": 1057,
+  "run_to_failure": false,
+  "drift_sensor": "t_z2_c",
+  "bad_zone": -1,
+  "magnitude": 0.24680610011721643
+ },
+ {
+  "chuck_id": 2004,
+  "fault": "he_leak",
+  "onset_wafer": 235,
+  "n_wafers": 713,
+  "run_to_failure": false,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 0.4354264975129744
+ },
+ {
+  "chuck_id": 2005,
+  "fault": "wear",
+  "onset_wafer": 357,
+  "n_wafers": 855,
+  "run_to_failure": true,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 1.0
+ },
+ {
+  "chuck_id": 2006,
+  "fault": "wear",
+  "onset_wafer": 153,
+  "n_wafers": 849,
+  "run_to_failure": true,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 1.0
+ },
+ {
+  "chuck_id": 2007,
+  "fault": "residual_charge",
+  "onset_wafer": 413,
+  "n_wafers": 796,
+  "run_to_failure": false,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 0.3146131607602155
+ },
+ {
+  "chuck_id": 2008,
+  "fault": "contamination",
+  "onset_wafer": 191,
+  "n_wafers": 980,
+  "run_to_failure": true,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 1.0
+ },
+ {
+  "chuck_id": 2009,
+  "fault": "contamination",
+  "onset_wafer": 274,
+  "n_wafers": 723,
+  "run_to_failure": true,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 1.0
+ },
+ {
+  "chuck_id": 2010,
+  "fault": "he_leak",
+  "onset_wafer": 234,
+  "n_wafers": 976,
+  "run_to_failure": false,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 0.41766309652608813
+ },
+ {
+  "chuck_id": 2011,
+  "fault": "sensor_drift",
+  "onset_wafer": 598,
+  "n_wafers": 970,
+  "run_to_failure": false,
+  "drift_sensor": "i_leak_ma",
+  "bad_zone": -1,
+  "magnitude": 0.24731574848747215
+ },
+ {
+  "chuck_id": 2012,
+  "fault": "healthy",
+  "onset_wafer": -1,
+  "n_wafers": 927,
+  "run_to_failure": false,
+  "drift_sensor": "",
+  "bad_zone": -1,
+  "magnitude": 0.7659891097099127
+ },
+ {
+  "chuck_id": 2013,
+  "fault": "heater_zone",
+  "onset_wafer": 369,
+  "n_wafers": 750,
+  "run_to_failure": false,
+  "drift_sensor": "",
+  "bad_zone": 4,
+  "magnitude": 0.38971042034108844
+ }
+]
