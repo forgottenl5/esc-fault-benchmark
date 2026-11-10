@@ -38,6 +38,7 @@ small sensor recalibrations, coolant drift, recipe changes and slow normal wear.
 | `data_small/chucks_{train,val}.json` | Per chuck: fault, onset wafer, length, fault size |
 | `data_small/timeseries_sample_train.parquet` | Raw 1 Hz signals for 2 training chucks |
 | `tasks/` | Task files for all splits (test files have no answers) |
+| `notebooks/esc-fault-starter.ipynb` | Starter notebook: features, random forest for tasks 1 and 3, validation scores, test prediction files (runs as is on Kaggle or locally) |
 | Full raw time series (about 500 MB compressed) | [Hugging Face: forgottenl5/esc-fault-benchmark](https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark), or rebuild train/val with `generate.py` |
 
 Raw signals: `v_set, v_rb, i_leak_ma, he_p_set_torr, he_p_torr, he_flow_sccm, t_wafer_c, t_z1_c..t_z4_c,
