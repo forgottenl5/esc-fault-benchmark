@@ -1,0 +1,15 @@
+chuck_id,n_wafers,fault,onset_wafer
+2000,868,residual_charge,334
+2001,769,healthy,-1
+2002,848,heater_zone,159
+2003,1057,sensor_drift,213
+2004,713,he_leak,235
+2005,855,wear,357
+2006,849,wear,153
+2007,796,residual_charge,413
+2008,980,contamination,191
+2009,723,contamination,274
+2010,976,he_leak,234
+2011,970,sensor_drift,598
+2012,927,healthy,-1
+2013,750,heater_zone,369
