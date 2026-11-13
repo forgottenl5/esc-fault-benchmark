@@ -153,7 +153,7 @@ Use GitHub's "Cite this repository" button (from `CITATION.cff`), or:
   author = {forgottenl5},
   year   = {2026},
   url    = {https://github.com/forgottenl5/esc-fault-benchmark},
-  note   = {Version 1.0.0}
+  note   = {Version 2.0.0}
 }
 ```
 
