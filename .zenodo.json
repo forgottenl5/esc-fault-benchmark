@@ -1,11 +1,29 @@
 {
   "title": "ESC-Fault: a simulated benchmark for electrostatic chuck fault diagnosis",
   "upload_type": "dataset",
-  "description": "Simulated sensor data from 140 electrostatic chucks (the part of a semiconductor etch or deposition tool that clamps and cools the wafer): about 125,000 wafers, 14 signals at 1 Hz, 7 classes including a sensor-fault decoy, and three causal tasks (diagnosis, early detection, remaining life) with held-out test labels. Code, simulator, baselines and scoring. Full data: https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark",
-  "creators": [{"name": "forgottenl5"}],
+  "description": "Simulated sensor data from electrostatic chucks (the part of a semiconductor etch or deposition tool that clamps and cools the wafer), with a physics-based simulator, baselines and scoring. v1: 140 chucks, about 125,000 wafers, 7 classes including a sensor-fault decoy. v2: 552 chucks, about 490,000 wafers, a new arcing fault, overlapping faults (multi-label), a tool-shift test split and a data-size study. Three causal tasks (diagnosis, early detection, remaining life) with held-out test labels. Full data: https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark",
+  "creators": [
+    {
+      "name": "forgottenl5"
+    }
+  ],
   "license": "cc-by-4.0",
-  "keywords": ["semiconductor", "electrostatic chuck", "fault detection", "fault diagnosis", "predictive maintenance", "remaining useful life", "benchmark", "synthetic data"],
+  "keywords": [
+    "semiconductor",
+    "electrostatic chuck",
+    "fault detection",
+    "fault diagnosis",
+    "predictive maintenance",
+    "remaining useful life",
+    "benchmark",
+    "synthetic data"
+  ],
   "related_identifiers": [
-    {"identifier": "https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark", "relation": "isSupplementedBy", "resource_type": "dataset"}
-  ]
+    {
+      "identifier": "https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark",
+      "relation": "isSupplementedBy",
+      "resource_type": "dataset"
+    }
+  ],
+  "version": "2.0.0"
 }
