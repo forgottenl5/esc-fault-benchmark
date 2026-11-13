@@ -102,6 +102,20 @@ assumptions, listed in the dataset card. Good scores here show a method can sepa
 patterns; they do not prove it will work on a real chuck. Corrections from people who work with ESCs are
 welcome; please open an issue.
 
+## How to cite
+
+Use GitHub's "Cite this repository" button (from `CITATION.cff`), or:
+
+```bibtex
+@misc{escfault2026,
+  title  = {ESC-Fault: a simulated benchmark for electrostatic chuck fault diagnosis},
+  author = {forgottenl5},
+  year   = {2026},
+  url    = {https://github.com/forgottenl5/esc-fault-benchmark},
+  note   = {Version 1.0.0}
+}
+```
+
 ## License
 
 Code: MIT. Data: CC BY 4.0. Author: forgottenl5.
