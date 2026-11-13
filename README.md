@@ -64,12 +64,17 @@ task-1 answers. Decoys are not scored.
 | Model | Task 1 macro-F1 | Task 2 detection | Task 2 median delay | Task 2 false alarms / 1k | Task 3 MAE (wafers) |
 | --- | --- | --- | --- | --- | --- |
 | Threshold rules | 0.667 | 87.5% | 152 | 0.00 | n/a |
-| Random forest | **0.812** | 83.3% | **73** | 0.17 | **65.5** |
+| Random forest | 0.812 | 83.3% | **73** | 0.17 | **65.5** |
+| Random forest + trend and consistency features (`baseline_features2.py`) | **0.861** | not run | not run | not run | not run |
 | Small neural net (MLP) | 0.782 | 83.3% | 74.5 | 0.17 | n/a |
 | Guess the mean | n/a | n/a | n/a | n/a | 123.4 |
 
-Per-class task-1 F1 for the random forest: heater_zone 0.57 and sensor_drift 0.23 are the open problems;
-the other classes are 0.95 or higher. Telling a failing sensor from a failing chuck is the hard part.
+Per-class task-1 F1 (test): the original random forest scores heater_zone 0.57 and sensor_drift 0.23; with the
+extended features they are 0.73 and 0.43, and every other class is 0.95 or higher. Telling a failing sensor from a
+failing chuck is still the hard part, but the test set has only 4 chucks per class, so these per-class numbers are
+noisy. A separate development run with 60 chucks per class (not released) gave the original random forest 0.61 on
+sensor_drift in cross-validation and 0.73 for gradient boosting with the extended features, so part of the low score
+here is too few training chucks: sensor_drift has 14 training chucks spread over 7 sub-types (4 sensors, 4 zones).
 
 ## Quick start
 
@@ -78,6 +83,7 @@ pip install -r requirements.txt
 python generate.py --out data --splits train,val     # rebuild train/val exactly (about 15 s)
 python make_tasks.py --data data --out tasks --splits train,val
 python baselines.py --data data --tasks tasks --eval val
+python baseline_features2.py --data data --tasks tasks --eval val   # task 1 with extended features
 python tests/test_reproducible.py                     # checks the rebuild matches the published files
 ```
 
