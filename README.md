@@ -15,6 +15,47 @@ public source or marked as an assumption (see [DATASET_CARD.md](DATASET_CARD.md)
 
 ![Per-wafer trends for one chuck of each class](figures/fault_trends.png)
 
+## New: v2 (multi-fault, tool shift, data-size study)
+
+v2 is a separate, larger release; v1 below is unchanged. Details in [DATASET_CARD.md](DATASET_CARD.md#dataset-card-esc-fault-v2).
+
+- 552 chucks, about 490,000 wafers: 40 chucks per class in train, 10 per class in test (4x v1)
+- New fault `arcing`; two faults at once on some chucks (task 1 becomes multi-label); intermittent helium
+  leaks; slow onsets; a recipe that appears mid-life with no reference wafers
+- `test_shift`: chucks from a second tool profile (other recipes, hardware and sensor noise)
+- Generator options so anyone can make more training data: `python generate2.py --per-class 100 --seed 1`
+
+| v2 baseline (gradient-boosted trees, `baselines2.py`) | val | test (tool A) | test_shift (tool B) |
+| --- | --- | --- | --- |
+| Task 1 macro-F1 over 7 faults | 0.902 | 0.872 | 0.847 |
+| Task 1 exact match (all faults right) | 0.890 | 0.864 | 0.815 |
+| Task 1 healthy windows wrongly flagged | 0.3% | 2.4% | 5.4% |
+| Task 2 detection rate / median delay (wafers) | 95% / 77 | 94% / 85 | 93% / 83 |
+| Task 2 false alarms per 1,000 healthy wafers | 0.11 | 0.11 | 0.21 |
+| Task 3 remaining-life MAE (wafers); guess-the-mean | 60.2; 117.7 | 55.8; 125.8 | 69.7; 115.9 |
+
+![v2 learning curve](figures/v2_learning_curve.png)
+
+What the data-size study shows (same model trained on 5, 10, 20 or 40 chucks per class, 3 random subsets
+below 40): task-1 macro-F1 on test rises from 0.80 to 0.87, and the second tool costs about 0.03 at every
+size. `sensor_drift` stays the hardest fault (test F1 0.20 at 5 chucks per class, 0.44 at 40): telling a
+drifting sensor from a failing chuck does not go away with more data. Validation scores it 0.78 because half of its
+8 sensor-drift chucks are helium-pressure drifts, which break an obvious consistency check; in the test set
+only 4 of 16 are, and several of the others are small or on chucks with a second fault. Per-sub-type scores are the next thing to report.
+
+v2 files are on [Hugging Face](https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark) under `v2/`
+(tables for all splits, raw signals for test and test_shift; rebuild train/val raw signals with
+`python generate2.py --splits train,val --raw`).
+
+```bash
+python generate2.py --out data_v2 --splits train,val          # exact rebuild, about 25 s
+python make_tasks2.py --data data_v2 --out tasks_v2 --splits train,val
+python baselines2.py --data data_v2 --tasks tasks_v2 --eval val
+python tests/test_reproducible_v2.py
+```
+
+The rest of this page describes v1.
+
 ## Fault classes
 
 | Fault | Physical cause | Main signature |
