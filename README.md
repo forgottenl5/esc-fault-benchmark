@@ -1,5 +1,7 @@
 # ESC-Fault: a simulated benchmark for electrostatic chuck fault diagnosis
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24185993.svg)](https://doi.org/10.5281/zenodo.24185993)
+
 A free, open benchmark for diagnosing faults in the **electrostatic chuck (ESC)**, the part of a
 semiconductor etch or deposition tool that holds the wafer with static electricity and cools it with
 backside helium.
@@ -153,7 +155,8 @@ Use GitHub's "Cite this repository" button (from `CITATION.cff`), or:
   author = {forgottenl5},
   year   = {2026},
   url    = {https://github.com/forgottenl5/esc-fault-benchmark},
-  note   = {Version 2.0.0}
+  note   = {Version 2.0.1},
+  doi    = {10.5281/zenodo.24185993}
 }
 ```
 

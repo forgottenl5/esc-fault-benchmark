@@ -4,7 +4,8 @@ title: "ESC-Fault: a simulated benchmark for electrostatic chuck fault diagnosis
 type: dataset
 authors:
   - alias: forgottenl5
-version: 2.0.0
+version: 2.0.1
+doi: 10.5281/zenodo.24185993
 date-released: 2026-11-13
 license: CC-BY-4.0
 repository-code: "https://github.com/forgottenl5/esc-fault-benchmark"
