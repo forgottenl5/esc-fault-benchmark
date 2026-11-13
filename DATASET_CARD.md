@@ -75,3 +75,56 @@ teaching; testing whether a method separates sensor faults from equipment faults
 
 No real fab data, no company-confidential information. Physical behaviour is taken from public patents,
 papers and datasets only.
+
+---
+
+# Dataset card: ESC-Fault v2
+
+v2 is a separate release; v1 above is unchanged and stays comparable. Code: `escbench/sim2.py`,
+`escbench/features_v2.py`, `escbench/tasks_v2.py`, `generate2.py`, `make_tasks2.py`, `baselines2.py`, `score2.py`.
+
+## What changed from v1
+
+| Change | Why |
+| --- | --- |
+| 4x more chucks: 40 per class in train (v1: 14), 10 per class in test (v1: 4) | v1's hard classes were partly a small-sample effect; per-class test scores were noisy |
+| New fault: `arcing` (micro-arcs: short leakage-current spikes, clamp-voltage dips, pressure blips), with rare background arcs on every chuck | Arcing / voltage breakdown is a known ESC failure mode (see US9417280) |
+| Overlapping faults: 8 fault pairs (e.g. contamination + sensor drift, helium leak + heater zone) | Real chucks can have more than one problem; task 1 becomes multi-label |
+| Intermittent helium leaks (30% of leaks) and slow onsets (30% of non-wear-out faults) | Harder, more realistic early detection |
+| A new recipe appears mid-life on 30% of chucks, never seen in the reference wafers | Methods must cope with a recipe they have no baseline for |
+| `test_shift` split from a second tool profile (B): other recipes, more leakage, lower gas conduction, 30% more sensor noise | Tests transfer to another tool, which fabs need and fixed datasets cannot test |
+| Signals rounded to a realistic logging resolution; 3 new per-wafer summaries (peak leakage current, minimum clamp-voltage readback ratio, peak chamber pressure) | Smaller files; arcing needs peak values, not just means |
+| Generator options (`--per-class`, `--seed`, `--raw`) | Anyone can make more training data and study how much data a method needs |
+
+## Splits
+
+| Split | Tool | Chucks | Wafers | Labels |
+| --- | --- | --- | --- | --- |
+| train | A | 360 (40 per class x 8 classes, 5 per fault pair x 8 pairs) | 319,205 | public |
+| val | A | 48 | 42,030 | public |
+| test | A | 96 (10 per class, 2 per pair) | 85,351 | held out (private seed) |
+| test_shift | B | 48 (5 per class, 1 per pair) | 43,100 | held out (private seed) |
+
+Train and validation rebuild exactly from the public seed (`tests/test_reproducible_v2.py`). Raw 1 Hz time
+series are published for test and test_shift; for train and validation, rebuild them with
+`python generate2.py --splits train,val --raw`.
+
+## Labels
+
+Per wafer: severity per fault (`sev_<fault>`, 0 to 1), `label` (faults with severity at least 0.15 joined
+by `+`, or `healthy`) and `rul` (wafers to end of life for chucks with contamination or wear, else -1).
+Task-1 windows where any fault is between 0 and 0.15 severity are skipped as ambiguous.
+
+## v2 assumptions (in addition to v1)
+
+All new constants are assumptions, chosen so the faults are detectable but not trivial: arc rate (0.004 per
+wafer background, up to 0.8 per wafer at full severity), spike size (0.15 to 0.6 mA for 1 to 2 s), voltage dip
+(2 to 6%), pressure blip (1 to 4 mTorr); tool B recipes and hardware factors; the mid-life recipe; intermittent
+leak episode lengths (10 to 60 wafers on, 20 to 100 off); slow-onset factor (2.5x); logging resolution.
+
+## Known limits of v2
+
+- Still a lumped, simulated model, not validated on real tool data.
+- Chuck length differs between wear-out chucks (end at failure) and others, as in v1; methods should not use
+  the total length, which is only known in hindsight (all tasks are causal).
+- Tool B is one alternative parameter set, not a model of a specific real tool.

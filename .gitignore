@@ -3,3 +3,5 @@ data/
 __pycache__/
 *.pyc
 baselines_out/
+data_v2/
+baselines_out_v2/
