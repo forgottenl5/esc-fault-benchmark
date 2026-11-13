@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use ESC-Fault, please cite it as below."
+title: "ESC-Fault: a simulated benchmark for electrostatic chuck fault diagnosis"
+type: dataset
+authors:
+  - alias: forgottenl5
+version: 1.0.0
+date-released: 2026-11-10
+license: CC-BY-4.0
+repository-code: "https://github.com/forgottenl5/esc-fault-benchmark"
+url: "https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark"
+abstract: >-
+  Simulated sensor data from 140 electrostatic chucks (semiconductor etch/deposition
+  tool part): about 125,000 wafers, 14 signals at 1 Hz, 7 classes including a
+  sensor-fault decoy, and three causal tasks (diagnosis, early detection, remaining
+  life) with held-out test labels.
+keywords:
+  - semiconductor
+  - electrostatic chuck
+  - fault detection
+  - fault diagnosis
+  - predictive maintenance
+  - remaining useful life
+  - benchmark
+  - synthetic data
