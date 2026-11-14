@@ -61,6 +61,23 @@ problem is concrete: a drifting zone-temperature sensor is nearly invisible to t
 are either ignored (called healthy) or blamed on an equipment fault. (On chucks with two faults, a prediction
 such as `contamination` can be right about the other fault while missing the drift.)
 
+**Does the raw 1 Hz signal help?** One could argue the summary features throw away information. I rebuilt the
+raw signals and fed gradient-boosted trees the shape of each signal across the 90-second wafer step (30 blocks
+x 11 signals, deviation from the chuck's own reference, median over the last 30 wafers plus the change from the
+30 before; `baseline_raw_profiles.py`). Result: almost no gain, and zone-temperature drift is still not found.
+
+| Features | val | test | test_shift | Sensor-drift F1 (test) | Zone-temp drift recall (test) |
+|---|---|---|---|---|---|
+| Summary only (baseline) | 0.902 | 0.872 | 0.847 | 0.437 | 0.11 |
+| Signal shapes only | 0.641 | 0.642 | 0.604 | 0.406 | 0.00 |
+| Summary + signal shapes | 0.902 | 0.875 | 0.852 | 0.462 | 0.06 |
+
+Signal shapes alone cannot find `residual_charge` or `arcing` (those live in spikes and release behaviour, not
+the mean shape), but they match the summary on slow faults. Adding them moves macro-F1 by +0.000 / +0.003 /
++0.005, within the noise of 28 test chucks. So the open problem is not feature resolution: with a drifting
+zone-temperature sensor, the data may simply carry too little signal for these model families. A model that
+exploits cross-zone physics, or a different approach, is the interesting direction.
+
 v2 files are on [Hugging Face](https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark) under `v2/`
 (tables for all splits, raw signals for test and test_shift; rebuild train/val raw signals with
 `python generate2.py --splits train,val --raw`).

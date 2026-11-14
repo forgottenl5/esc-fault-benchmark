@@ -1,0 +1,170 @@
+{
+ "val | summary only": {
+  "macro_f1": 0.902,
+  "exact": 0.89,
+  "per_fault": {
+   "contamination": 0.991,
+   "wear": 0.972,
+   "he_leak": 0.915,
+   "residual_charge": 0.995,
+   "heater_zone": 0.737,
+   "arcing": 0.931,
+   "sensor_drift": 0.776
+  },
+  "sensor_recall": {
+   "he_flow_sccm": 0.59,
+   "he_p_torr": 0.98,
+   "i_leak_ma": 0.58,
+   "zone_temperature": 0.12
+  }
+ },
+ "val | profiles only": {
+  "macro_f1": 0.641,
+  "exact": 0.658,
+  "per_fault": {
+   "contamination": 0.995,
+   "wear": 0.981,
+   "he_leak": 0.884,
+   "residual_charge": 0.089,
+   "heater_zone": 0.745,
+   "arcing": 0.095,
+   "sensor_drift": 0.694
+  },
+  "sensor_recall": {
+   "he_flow_sccm": 0.59,
+   "he_p_torr": 0.82,
+   "i_leak_ma": 0.53,
+   "zone_temperature": 0.0
+  }
+ },
+ "val | summary + profiles": {
+  "macro_f1": 0.902,
+  "exact": 0.892,
+  "per_fault": {
+   "contamination": 1.0,
+   "wear": 0.972,
+   "he_leak": 0.925,
+   "residual_charge": 0.995,
+   "heater_zone": 0.698,
+   "arcing": 0.933,
+   "sensor_drift": 0.79
+  },
+  "sensor_recall": {
+   "he_flow_sccm": 0.76,
+   "he_p_torr": 1.0,
+   "i_leak_ma": 0.53,
+   "zone_temperature": 0.0
+  }
+ },
+ "test | summary only": {
+  "macro_f1": 0.872,
+  "exact": 0.864,
+  "per_fault": {
+   "contamination": 0.981,
+   "wear": 0.991,
+   "he_leak": 0.945,
+   "residual_charge": 1.0,
+   "heater_zone": 0.82,
+   "arcing": 0.933,
+   "sensor_drift": 0.437
+  },
+  "sensor_recall": {
+   "he_flow_sccm": 0.45,
+   "he_p_torr": 0.52,
+   "i_leak_ma": 0.28,
+   "zone_temperature": 0.11
+  }
+ },
+ "test | profiles only": {
+  "macro_f1": 0.642,
+  "exact": 0.662,
+  "per_fault": {
+   "contamination": 0.981,
+   "wear": 0.991,
+   "he_leak": 0.949,
+   "residual_charge": 0.231,
+   "heater_zone": 0.802,
+   "arcing": 0.136,
+   "sensor_drift": 0.406
+  },
+  "sensor_recall": {
+   "he_flow_sccm": 0.4,
+   "he_p_torr": 0.42,
+   "i_leak_ma": 0.53,
+   "zone_temperature": 0.0
+  }
+ },
+ "test | summary + profiles": {
+  "macro_f1": 0.875,
+  "exact": 0.87,
+  "per_fault": {
+   "contamination": 0.979,
+   "wear": 0.991,
+   "he_leak": 0.964,
+   "residual_charge": 1.0,
+   "heater_zone": 0.8,
+   "arcing": 0.931,
+   "sensor_drift": 0.462
+  },
+  "sensor_recall": {
+   "he_flow_sccm": 0.49,
+   "he_p_torr": 0.52,
+   "i_leak_ma": 0.4,
+   "zone_temperature": 0.06
+  }
+ },
+ "test_shift | summary only": {
+  "macro_f1": 0.847,
+  "exact": 0.815,
+  "per_fault": {
+   "contamination": 0.927,
+   "wear": 0.922,
+   "he_leak": 0.86,
+   "residual_charge": 0.986,
+   "heater_zone": 0.805,
+   "arcing": 0.871,
+   "sensor_drift": 0.555
+  },
+  "sensor_recall": {
+   "he_p_torr": 1.0,
+   "i_leak_ma": 0.57,
+   "zone_temperature": 0.0
+  }
+ },
+ "test_shift | profiles only": {
+  "macro_f1": 0.604,
+  "exact": 0.682,
+  "per_fault": {
+   "contamination": 0.924,
+   "wear": 0.883,
+   "he_leak": 0.898,
+   "residual_charge": 0.016,
+   "heater_zone": 0.804,
+   "arcing": 0.041,
+   "sensor_drift": 0.663
+  },
+  "sensor_recall": {
+   "he_p_torr": 0.97,
+   "i_leak_ma": 0.57,
+   "zone_temperature": 0.0
+  }
+ },
+ "test_shift | summary + profiles": {
+  "macro_f1": 0.852,
+  "exact": 0.834,
+  "per_fault": {
+   "contamination": 0.934,
+   "wear": 0.917,
+   "he_leak": 0.916,
+   "residual_charge": 0.986,
+   "heater_zone": 0.793,
+   "arcing": 0.826,
+   "sensor_drift": 0.591
+  },
+  "sensor_recall": {
+   "he_p_torr": 1.0,
+   "i_leak_ma": 0.42,
+   "zone_temperature": 0.0
+  }
+ }
+}
