@@ -78,6 +78,8 @@ the mean shape), but they match the summary on slow faults. Adding them moves ma
 zone-temperature sensor, the data may simply carry too little signal for these model families. A model that
 exploits cross-zone physics, or a different approach, is the interesting direction.
 
+Write-up of these results: [A fault model scored 0.90 on validation and still missed most sensor drift](docs/writeup-sensor-drift.md).
+
 v2 files are on [Hugging Face](https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark) under `v2/`
 (tables for all splits, raw signals for test and test_shift; rebuild train/val raw signals with
 `python generate2.py --splits train,val --raw`).
