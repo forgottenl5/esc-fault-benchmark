@@ -43,7 +43,23 @@ below 40): task-1 macro-F1 on test rises from 0.80 to 0.87, and the second tool 
 size. `sensor_drift` stays the hardest fault (test F1 0.20 at 5 chucks per class, 0.44 at 40): telling a
 drifting sensor from a failing chuck does not go away with more data. Validation scores it 0.78 because half of its
 8 sensor-drift chucks are helium-pressure drifts, which break an obvious consistency check; in the test set
-only 4 of 16 are, and several of the others are small or on chucks with a second fault. Per-sub-type scores are the next thing to report.
+only 4 of 16 are, and several of the others are small or on chucks with a second fault.
+
+Which sensor drifts matters more than anything else (`analysis_sensor_drift.py`; share of drifting windows
+the baseline flags, test / test_shift; few chucks per row, so treat as rough):
+
+| Drifting sensor | Test recall | test_shift recall | Most common prediction when missed |
+| --- | --- | --- | --- |
+| Helium pressure | 0.52 | 1.00 | `he_leak` |
+| Helium flow | 0.45 | (none in split) | healthy, then `contamination` |
+| Leakage current | 0.28 | 0.57 | healthy (test), `contamination` (test_shift) |
+| Zone temperature | 0.11 | 0.00 | healthy, then `heater_zone` |
+
+Small drifts are mostly missed (recall 0.14 for drifts under 40% of full size on test, 0.48 above 70%). On
+the second tool the error flips direction: 28 windows of real helium leaks are called sensor drift. The open
+problem is concrete: a drifting zone-temperature sensor is nearly invisible to this model, and missed drifts
+are either ignored (called healthy) or blamed on an equipment fault. (On chucks with two faults, a prediction
+such as `contamination` can be right about the other fault while missing the drift.)
 
 v2 files are on [Hugging Face](https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark) under `v2/`
 (tables for all splits, raw signals for test and test_shift; rebuild train/val raw signals with
@@ -55,6 +71,9 @@ python make_tasks2.py --data data_v2 --out tasks_v2 --splits train,val
 python baselines2.py --data data_v2 --tasks tasks_v2 --eval val
 python tests/test_reproducible_v2.py
 ```
+
+Starter notebook (loads the Hugging Face `v2/` files, trains, scores, writes test predictions):
+[notebooks/esc-fault-v2-starter.ipynb](notebooks/esc-fault-v2-starter.ipynb).
 
 The rest of this page describes v1.
 
