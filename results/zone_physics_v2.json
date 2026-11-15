@@ -1,0 +1,122 @@
+{
+ "cv | summary only": {
+  "macro_f1": 0.89,
+  "sensor_drift_f1": 0.686,
+  "heater_zone_f1": 0.812,
+  "zone_drift_windows": 309,
+  "zone_drift_chucks": 12,
+  "zone_drift_recall": 0.317,
+  "zone_drift_called_heater": 0.43,
+  "heater_recall": 0.825
+ },
+ "cv | summary + physics v1": {
+  "macro_f1": 0.893,
+  "sensor_drift_f1": 0.693,
+  "heater_zone_f1": 0.817,
+  "zone_drift_windows": 309,
+  "zone_drift_chucks": 12,
+  "zone_drift_recall": 0.356,
+  "zone_drift_called_heater": 0.398,
+  "heater_recall": 0.824
+ },
+ "cv | summary + physics v2": {
+  "macro_f1": 0.894,
+  "sensor_drift_f1": 0.69,
+  "heater_zone_f1": 0.827,
+  "zone_drift_windows": 309,
+  "zone_drift_chucks": 12,
+  "zone_drift_recall": 0.333,
+  "zone_drift_called_heater": 0.285,
+  "heater_recall": 0.823
+ },
+ "val | summary only": {
+  "macro_f1": 0.902,
+  "sensor_drift_f1": 0.776,
+  "heater_zone_f1": 0.737,
+  "zone_drift_windows": 17,
+  "zone_drift_chucks": 1,
+  "zone_drift_recall": 0.118,
+  "zone_drift_called_heater": 0.941,
+  "heater_recall": 0.68
+ },
+ "val | summary + physics v1": {
+  "macro_f1": 0.908,
+  "sensor_drift_f1": 0.757,
+  "heater_zone_f1": 0.776,
+  "zone_drift_windows": 17,
+  "zone_drift_chucks": 1,
+  "zone_drift_recall": 0.176,
+  "zone_drift_called_heater": 0.941,
+  "heater_recall": 0.784
+ },
+ "val | summary + physics v2": {
+  "macro_f1": 0.914,
+  "sensor_drift_f1": 0.777,
+  "heater_zone_f1": 0.781,
+  "zone_drift_windows": 17,
+  "zone_drift_chucks": 1,
+  "zone_drift_recall": 0.235,
+  "zone_drift_called_heater": 1.0,
+  "heater_recall": 0.753
+ },
+ "test | summary only": {
+  "macro_f1": 0.872,
+  "sensor_drift_f1": 0.437,
+  "heater_zone_f1": 0.82,
+  "zone_drift_windows": 79,
+  "zone_drift_chucks": 5,
+  "zone_drift_recall": 0.114,
+  "zone_drift_called_heater": 0.278,
+  "heater_recall": 0.789
+ },
+ "test | summary + physics v1": {
+  "macro_f1": 0.873,
+  "sensor_drift_f1": 0.442,
+  "heater_zone_f1": 0.808,
+  "zone_drift_windows": 79,
+  "zone_drift_chucks": 5,
+  "zone_drift_recall": 0.101,
+  "zone_drift_called_heater": 0.278,
+  "heater_recall": 0.774
+ },
+ "test | summary + physics v2": {
+  "macro_f1": 0.872,
+  "sensor_drift_f1": 0.436,
+  "heater_zone_f1": 0.81,
+  "zone_drift_windows": 79,
+  "zone_drift_chucks": 5,
+  "zone_drift_recall": 0.114,
+  "zone_drift_called_heater": 0.278,
+  "heater_recall": 0.769
+ },
+ "test_shift | summary only": {
+  "macro_f1": 0.847,
+  "sensor_drift_f1": 0.555,
+  "heater_zone_f1": 0.805,
+  "zone_drift_windows": 34,
+  "zone_drift_chucks": 2,
+  "zone_drift_recall": 0.0,
+  "zone_drift_called_heater": 0.588,
+  "heater_recall": 0.85
+ },
+ "test_shift | summary + physics v1": {
+  "macro_f1": 0.852,
+  "sensor_drift_f1": 0.55,
+  "heater_zone_f1": 0.809,
+  "zone_drift_windows": 34,
+  "zone_drift_chucks": 2,
+  "zone_drift_recall": 0.0,
+  "zone_drift_called_heater": 0.618,
+  "heater_recall": 0.875
+ },
+ "test_shift | summary + physics v2": {
+  "macro_f1": 0.845,
+  "sensor_drift_f1": 0.554,
+  "heater_zone_f1": 0.8,
+  "zone_drift_windows": 34,
+  "zone_drift_chucks": 2,
+  "zone_drift_recall": 0.0,
+  "zone_drift_called_heater": 0.618,
+  "heater_recall": 0.85
+ }
+}

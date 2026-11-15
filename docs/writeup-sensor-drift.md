@@ -42,6 +42,8 @@ Result: macro-F1 moved by +0.000 on validation, +0.003 on test and +0.005 on the
 
 So the bottleneck is not feature resolution. A drifting zone-temperature sensor may carry too little information for these model families on this data. I do not know whether a model that uses cross-zone physics could find it. That is the part I would like someone to try.
 
+**Update:** I tried three heater-physics checks myself (wafer temperature, the helium set-point the controller uses to compensate a real heater change, and their coupling over time). The set-point check separates the two cases clearly when the shift is large, but on test it changed nothing: half of the drifting windows are shifts under 1.2 C, the size of ordinary calibration offsets on healthy chucks. Details and numbers are in the [README](../README.md).
+
 ## Mistakes worth admitting
 
 My first v1 scores for sensor drift and heater zone looked terrible, and I initially read that as hard faults. Mostly it was a tiny sample. I also wrote a "when it was missed" column in a table from memory before checking it per sensor; part of it was wrong, and I corrected it before publishing. Check per-subgroup numbers before you explain them.

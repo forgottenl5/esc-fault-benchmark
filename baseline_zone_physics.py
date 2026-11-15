@@ -1,4 +1,4 @@
-"""Can heater physics separate a drifting zone-temperature sensor from a real heater-zone fault? (v2, task 1)
+"""Can heater physics separate a drifting zone-temperature sensor from a real heater-zone fault? (v2, task 1). Result: no gain on test; see README.
 
 If one heater zone really runs hot or cold by d degrees, the chuck body follows (by about d/4 with four zones), so
 the wafer temperature moves and the leakage current changes with it (dielectric resistance falls with temperature).

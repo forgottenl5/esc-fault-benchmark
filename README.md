@@ -78,6 +78,27 @@ the mean shape), but they match the summary on slow faults. Adding them moves ma
 zone-temperature sensor, the data may simply carry too little signal for these model families. A model that
 exploits cross-zone physics, or a different approach, is the interesting direction.
 
+**Can heater physics catch it?** A real heater-zone fault and a drifting zone sensor look the same on the zone
+reading, but only the real fault changes the chuck. I tested three physics checks (`baseline_zone_physics.py`,
+developed with 5-fold cross-validation on training chucks, then scored once on test):
+(1) does the wafer temperature move with the zone? It does not, because the run-to-run controller re-tunes the
+helium pressure to hold the wafer on target; (2) does the helium set-point move with the zone reading? For real
+heater faults it does (correlation 0.89 across windows), for a drifting sensor not at all (-0.01); (3) do they
+move together over time? Not usable, since most heater faults are a step that is already in place.
+
+| Zone-temperature drift, task 1 | CV on train (12 chucks) | test (5 chucks) | test_shift (2 chucks) |
+|---|---|---|---|
+| Recall, summary features | 0.32 | 0.11 | 0.00 |
+| Recall, + set-point check (2) | 0.33 | 0.11 | 0.00 |
+| Called heater fault instead, summary / + check | 0.43 / 0.29 | 0.28 / 0.28 | 0.59 / 0.62 |
+
+The set-point check cut heater mix-ups in cross-validation but did not carry over to test, and macro-F1 is
+unchanged (test 0.872 / 0.872). Two reasons, both visible in the data: half of the drifting windows are shifts
+under 1.2 C, about the size of the one-off calibration offsets that healthy chucks also show (99th percentile
+1.1 C); recall there is 0.09 to 0.14 against 0.67 for shifts above 2.5 C. And the helium set-point also wanders on healthy chucks over their life (10th to 90th percentile -0.07 to
++0.03, relative), about as much as a real 1 to 1.5 C heater shift would move it, so a missing controller
+response is hard to see for small shifts. With 5 test chucks this is a small sample. Still open.
+
 Write-up of these results: [A fault model scored 0.90 on validation and still missed most sensor drift](docs/writeup-sensor-drift.md).
 
 v2 files are on [Hugging Face](https://huggingface.co/datasets/forgottenl5/esc-fault-benchmark) under `v2/`
