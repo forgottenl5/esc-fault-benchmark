@@ -204,6 +204,19 @@ assumptions, listed in the dataset card. Good scores here show a method can sepa
 patterns; they do not prove it will work on a real chuck. Corrections from people who work with ESCs are
 welcome; please open an issue.
 
+## Validation status and roadmap
+
+This benchmark is new and not yet independently validated. Where each kind of external validation stands:
+
+| Validation | Status | How you can help |
+| --- | --- | --- |
+| Review by people who work with ESCs or etch tools | Not yet done | Open an issue flagging any constant, fault signature or noise level that looks wrong for a real tool |
+| Comparison with real equipment data | Not yet done; real ESC data is rarely public | If you can compare against real tool data, even as summary statistics, please share what matched and what did not |
+| Peer-reviewed publication | Not yet submitted | — |
+| Use by other groups | None reported yet | If you use ESC-Fault in a project, course or paper, open an issue or submit test results so it can be listed here |
+
+This table will be updated as each item changes.
+
 ## How to cite
 
 Use GitHub's "Cite this repository" button (from `CITATION.cff`), or:
